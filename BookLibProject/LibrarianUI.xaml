@@ -1,0 +1,93 @@
+﻿<Page
+    x:Class="BookLibProject.LibrarianPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookLibProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    NavigationCacheMode="Required"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource = "/Assets/Librarian.jpg"></ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Button x:Name="logOutBtn" Content="Log Out" VerticalAlignment="Top" Background="Black" Click="logOutBtn_Click"></Button>
+        <ListView x:Name="BookListView" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}" Width="275" Height="500" Grid.Row="1" 
+                  Grid.RowSpan="3" Grid.ColumnSpan="2"
+                  VerticalAlignment="Center" HorizontalAlignment="Center" SelectionChanged="BookListView_SelectionChanged"/>
+        <ListView x:Name="FilterBy" Header="Filter By:" Grid.Row="1" Width="100" HorizontalAlignment ="Left" 
+                  Margin="125,0,0,10" SelectionChanged="FilterBy_SelectionChanged" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}">
+            <ListViewItem x:Name="FiltName" Content="Name" />
+            <ListViewItem x:Name="FiltAuthor" Content="Author"/>
+            <ListViewItem x:Name="FiltGenre" Content="Genre"/>
+            <ListViewItem x:Name="FiltPublisher" Content="Publisher"/>
+        </ListView>
+        <Button x:Name="ViewAllBTN" Content="View All" Grid.Row="4" Grid.ColumnSpan="2" Click="ViewAllBTN_Click" Background="Black" 
+                HorizontalAlignment="Center" VerticalAlignment="Top" />
+        
+        <StackPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Margin="100, -100, 0,0 " Height="80" Background="Black">
+            <TextBlock Text="Rented Status:" ></TextBlock>
+            <TextBlock HorizontalAlignment="Center" x:Name="RentedBox" Text=" "></TextBlock>
+            <TextBlock Text="Rented On:"></TextBlock>
+            <TextBlock x:Name="RentDateBox" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <Border Margin="0,0,0,90" Height="20" HorizontalAlignment="Left" Background="Snow">
+            <TextBlock x:Name="CurrentLoginBlock" Foreground="Black"  Text="Logged in as "></TextBlock>
+        </Border>
+        <Border  Margin="0,0,0,30" Height="20" HorizontalAlignment="Left" Background="Snow">
+            <TextBlock Text="Remember to save before exit! No autosave." Foreground="Black"></TextBlock>
+        </Border>
+        <ComboBox x:Name="SubFilter" Grid.Row="2" Header="Sub Filter:" Width="300" IsEnabled="False" Margin="125,10,0,0" SelectionChanged="SubFilter_SelectionChanged" 
+                  Background="Black" />
+        <TextBox x:Name="NameFilter" Grid.Row="2" Header="Name Filter: (Case sensitive)" HorizontalAlignment="Left" Width="200"
+                 TextWrapping="Wrap" MaxLength="50" IsEnabled="False" Margin="128,100,0,33" TextChanged="NameFilter_TextChanged" Background="Black"/>
+        <Border Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Background="{ThemeResource ComboBoxBackgroundThemeBrush}" Height="200" Margin="100,0,0,0">
+            <TextBlock Name="DescriptionTB"  Foreground="Black" Width="400" Height="200" TextWrapping="Wrap"></TextBlock>
+        </Border>
+
+        <Image x:Name="BookCoverImg" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="350" Width="300"
+               Margin="100,0,0 ,0"></Image>
+        <StackPanel Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Spacing="10" Margin="125,13,0,0">
+            <TextBlock Text="Admin Tools:"></TextBlock>
+            <Button x:Name="Addbtn" Content="Add Book" Click="Addbtn_Click" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}"></Button>
+            <Button x:Name="Editbtn" Content="Edit Book" Click="Editbtn_Click" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}"></Button>
+            <Button x:Name="Removebtn" Content="Remove Book" Click="Removebtn_Click" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}"></Button>
+            <Button x:Name="ChkRentbtn" Content="Rented Page" Click="ChkRentbtn_Click" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}"></Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" HorizontalAlignment="Left" Margin="265,47,0,33" Spacing="10">
+            <TextBlock Text="For current user:"></TextBlock>
+            <Button x:Name="Rentbtn" Content="Rent Book" Background="Black" Click="Rentbtn_Click"></Button>
+            <Button x:Name="Returnbtn" Content="Return Book" Background="Black" Click="Returnbtn_Click"></Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Margin="0,0 ,150,46">
+            <TextBlock Text="Error Control:"></TextBlock>
+            <TextBlock x:Name="ErrorBlock" Foreground="WhiteSmoke"></TextBlock>
+            <Button x:Name="ClearErrorBTN" Content="Clear error" Click="ClearErrorBTN_Click"></Button>
+        </StackPanel>
+        <Border Grid.Row="1" Background="AliceBlue" Height="90" Width="170" Margin="0, 0 ,50 ,0">
+            <TextBlock x:Name="BooksAmountTBlock" Foreground="Black"></TextBlock>
+        </Border>
+
+        <StackPanel Grid.Row="4" HorizontalAlignment="Left" Spacing="10" Margin="125,10,0,-10">
+            <TextBlock Text="XML Save:"></TextBlock>
+            <Button x:Name="SaveBTN" Content="Save as XML" Background="Black" Click="SaveBTN_Click"/>
+            <Button x:Name="LoadBTN" Content="Load as XML" Background="Black" Click="LoadBTN_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

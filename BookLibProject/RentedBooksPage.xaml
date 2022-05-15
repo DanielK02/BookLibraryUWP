@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="BookLibProject.RentedBooksPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookLibProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource = "/Assets/RentPage.jpg"></ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="UserListView" Header="User List:" Grid.Row="1" HorizontalAlignment="Center" SelectionChanged="UserListView_SelectionChanged" 
+                  Width="150" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}" ></ListView>
+        <ListView x:Name="RentedBooksListView" Header="Books rented by user:" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  
+                  Width="300" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}"></ListView>
+        <ListView x:Name="RentAvailableListView" Header="Books available to rent" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" 
+                  Width="300" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}"></ListView>
+        <Button x:Name="BackBTN" Content="Back" VerticalAlignment="Top" Click="BackBTN_Click"  Background="Black"></Button>
+        <Button x:Name="ReturnBTN" Content="Return Book for selected user" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"  Background="Black" Click="ReturnBTN_Click"></Button>
+        <Button x:Name="RentBTN" Content="Rent Book for selected user" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Background="Black" Click="RentBTN_Click"></Button>
+
+        <StackPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Spacing="10" Width="100" Background="Black" Margin="100,122,0,0">
+            <TextBlock Text="XML Save:" HorizontalAlignment="Center"></TextBlock>
+            <Button x:Name="SaveBTN" Content="Save as XML" Click="SaveBTN_Click"/>
+            <TextBlock Text="Load in Librarian page" FontSize="12" TextWrapping="Wrap"></TextBlock>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Margin="100,0 ,0,0" Spacing="10">
+            <TextBlock Text="Error Control:"></TextBlock>
+            <TextBlock x:Name="ErrorBlock" Foreground="WhiteSmoke"></TextBlock>
+            <Button x:Name="ClearErrorBTN" Content="Clear error" Click="ClearErrorBTN_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="BookLibProject.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookLibProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource = "/Assets/Main.jpg"></ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="10">
+            <TextBox x:Name="UserTB" MaxLength="20" Width="200"></TextBox>
+            <PasswordBox x:Name="PasswordTB" MaxLength="20"></PasswordBox>
+            <Button x:Name="LoginBTN" Content="Login" HorizontalAlignment="Center" Background="Black" Click="LoginBTN_Click"/>
+        </StackPanel>
+        <Border Margin="5,5,0,0" Background="Snow" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBlock x:Name="loadBlock" Text="Ready" Foreground="Black" ></TextBlock>
+        </Border>
+        
+        <TextBlock Text="Developed by Daniel Krigel" Grid.Row="2" Grid.Column="1" Margin="0,0,5,5"
+                   HorizontalAlignment="Right" VerticalAlignment="Bottom"></TextBlock>
+
+        <Border Background="Black" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0">
+            <TextBlock x:Name="ErrorBlock" Text=""/>
+        </Border>   
+        <Border Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0">
+            <TextBlock Text="Please enter username and password"/>
+        </Border>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 130, 40" Spacing="20" Background="Black" Width="70" Height="70">
+            <TextBlock Text="Username:" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock Text="Password:" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+
+    </Grid>
+</Page>

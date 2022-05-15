@@ -1,0 +1,77 @@
+﻿<Page
+    x:Class="BookLibProject.UserUI"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookLibProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    NavigationCacheMode="Required"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource = "/Assets/UserBackground.jpg"></ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Margin="0,0,200,0">
+            <TextBlock Text="Error control:"></TextBlock>
+            <TextBlock x:Name="ErrorBlock"></TextBlock>
+            <Button x:Name="ClearErrorBTN" Content="Clear Errors" Click="ClearErrorBTN_Click" ></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="175" Background="Black" Spacing="30">
+            <ComboBox x:Name="UserRentedBooksBox" Header="Your books rented:" HorizontalAlignment="Center" Width="175"></ComboBox>
+            <TextBlock Text="Note: Changes can only be made using the list on the right." TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Center" Foreground="DarkOrange"></TextBlock>
+        </StackPanel>
+
+        <ListView x:Name="ListViewUser" Width="300" Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}" SelectionChanged="ListViewUser_SelectionChanged"></ListView>
+        <ListView x:Name="ListViewFilter" Header="Filter By:" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Width="200" Height="200" Margin="100,100,0,100" 
+                  Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}" SelectionChanged="ListViewFilter_SelectionChanged">
+            <ListViewItem x:Name="FiltName" Content="Name"></ListViewItem>
+            <ListViewItem x:Name="FiltAuthor" Content="Author"></ListViewItem>
+            <ListViewItem x:Name="FiltGenre" Content="Genre"></ListViewItem>
+            <ListViewItem x:Name="FiltPublisher" Content="Publisher"></ListViewItem>
+        </ListView>
+
+        <ComboBox x:Name="SubFilter" Grid.Row="2" Grid.ColumnSpan="2" Header="Sub Filter:" Width="250" IsEnabled="False" Margin="100,185,0,0"
+                  Background="Black" SelectionChanged="SubFilter_SelectionChanged" Grid.RowSpan="2" />
+        <TextBox x:Name="NameFilter" Grid.Row="3" Header="Name Filter: (Case sensitive)" HorizontalAlignment="Left" Width="200" 
+                 TextWrapping="Wrap" MaxLength="50" IsEnabled="False" Margin="100,67,0,66" Background="Black" TextChanged="NameFilter_TextChanged"/>
+
+        <Button x:Name="ViewAllBTN" Content="View All" Grid.Row="4" Grid.Column="2" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}" HorizontalAlignment="Center" Margin="0,0,0,100" Click="ViewAllBTN_Click" />
+        <Button x:Name="UserLogOutBTN" Content="Log out" Margin="0,0,0,0" VerticalAlignment="Top" Click="LogOut_Click" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}"/>
+        <Image x:Name="BookCoverIMG" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="400" Width="300"></Image>
+        <Border VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Background="AliceBlue" Height="175" Width="350">
+            <TextBlock x:Name="DescriptionTB" Foreground="Black" TextWrapping="Wrap" ></TextBlock>
+        </Border>
+        <StackPanel Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,10,0,0" Spacing="20">
+            <Button x:Name="UserRentBTN" Content="Rent Book" Click="UserRentBTN_Click" Background="Black"></Button>
+            <Button x:Name="UserRtrnBTN" Content="Return Book" Click="UserRtrnBTN_Click" Background="Black"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0, -100, 0,0 " Height="80" Background="Black">
+            <TextBlock Text="Rented Status:" ></TextBlock>
+            <TextBlock HorizontalAlignment="Center" x:Name="RentedBox" Text=" "></TextBlock>
+            <TextBlock Text="Rented On:"></TextBlock>
+            <TextBlock x:Name="RentDateBox" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+
+        <Border Margin="0,0,0,100" Height="20" HorizontalAlignment="Left" Background="Black">
+            <TextBlock x:Name="CurrentLoginBlock" Foreground="White"  Text="Logged in as "></TextBlock>
+        </Border>
+
+    </Grid>
+</Page>
